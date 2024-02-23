@@ -1,6 +1,7 @@
 package com.yaremax.berealnotifierbot.bot;
 
 import com.yaremax.berealnotifierbot.constants.Actions;
+import com.yaremax.berealnotifierbot.constants.TextCommands;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
@@ -13,6 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class MyTelegramBot extends TelegramLongPollingCommandBot {
@@ -40,7 +42,7 @@ public class MyTelegramBot extends TelegramLongPollingCommandBot {
                                 .keyboardRow(new KeyboardRow(
 
                                         List.of(
-                                                new KeyboardButton("I'm reply keyboard button")
+                                                new KeyboardButton(TextCommands.DEMO_TEXT_COMMAND)
                                         )
                                 ))
                                 .build();
@@ -61,6 +63,15 @@ public class MyTelegramBot extends TelegramLongPollingCommandBot {
                         .build());
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
+            }
+        }
+
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            var message = update.getMessage();
+            var text = message.getText();
+            var command = getRegisteredCommand(text);
+            if (Objects.nonNull(command)) {
+                command.processMessage(this, message, new String[] {});
             }
         }
     }
