@@ -1,3 +1,10 @@
 bot:
     token: 7119214109:AAFvkrEB0w3-RhahI2pu52wGXM5sTnoPXA4
     username: bereal_notifier_bot
+
+server:
+    port: 443
+    ssl:
+        key-store: classpath:yaremax-keystore.jks
+        key-store-password: ***REMOVED***
+        key-store-type: JKS
