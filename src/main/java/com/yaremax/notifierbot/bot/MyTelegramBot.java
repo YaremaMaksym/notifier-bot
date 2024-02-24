@@ -25,6 +25,18 @@ public class MyTelegramBot extends TelegramLongPollingCommandBot {
         this.username = username;
     }
 
+    public void sendMessage(String chatId, String text) {
+        SendMessage message = SendMessage.builder()
+                .chatId(chatId)
+                .text(text)
+                .build();
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public String getBotUsername() {
         return username;

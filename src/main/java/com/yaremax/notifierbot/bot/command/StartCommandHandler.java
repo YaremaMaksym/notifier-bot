@@ -2,6 +2,7 @@ package com.yaremax.notifierbot.bot.command;
 
 import com.yaremax.notifierbot.bot.constants.Actions;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
@@ -14,6 +15,7 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 
 import java.util.List;
 
+@Slf4j
 @Component
 public class StartCommandHandler extends BotCommand {
 
@@ -33,6 +35,7 @@ public class StartCommandHandler extends BotCommand {
                                 .build()
                 ))
                 .build();
+        log.info(chat.getId().toString());
         var sendMessage = SendMessage.builder()
                 .chatId(chat.getId())
                 .text("Some text")
