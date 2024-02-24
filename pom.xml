@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yaremax</groupId>
-    <artifactId>bereal-notifier-bot</artifactId>
+    <artifactId>notifier-bot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bereal-notifier-bot</name>
-    <description>bereal-notifier-bot</description>
+    <name>notifier-bot</name>
+    <description>notifier-bot</description>
     <properties>
         <java.version>17</java.version>
     </properties>

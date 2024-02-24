@@ -1,6 +1,6 @@
-package com.yaremax.berealnotifierbot.bot.command;
+package com.yaremax.notifierbot.bot.command;
 
-import com.yaremax.berealnotifierbot.constants.TextCommands;
+import com.yaremax.notifierbot.constants.TextCommands;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.yaremax.berealnotifierbot.bot.command;
+package com.yaremax.notifierbot.bot.command;
 
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.IBotCommand;
 
