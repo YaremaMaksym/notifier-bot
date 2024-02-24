@@ -1,7 +1,7 @@
 package com.yaremax.notifierbot.bot;
 
-import com.yaremax.notifierbot.constants.Actions;
-import com.yaremax.notifierbot.constants.TextCommands;
+import com.yaremax.notifierbot.bot.constants.Actions;
+import com.yaremax.notifierbot.bot.constants.TextCommands;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
