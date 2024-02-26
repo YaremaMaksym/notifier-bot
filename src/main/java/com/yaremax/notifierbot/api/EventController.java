@@ -20,10 +20,10 @@ public class EventController {
 //            log.info("Invalid region: {}", regionRequest.region());
 ////            return ResponseEntity.badRequest().body("Invalid region");
 //        }
+        log.info("Received POST request on /api/v1/event");
 
         eventService.handleEvent();
 
-        log.info("Webhook event processed successfully");
         return ResponseEntity.ok("Event processed successfully");
     }
 
