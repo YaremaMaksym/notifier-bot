@@ -22,7 +22,7 @@ public class EventController {
 //        }
         log.info("Received POST request on /api/v1/event");
 
-        eventService.handleEvent();
+        eventService.handleEvent("");
 
         return ResponseEntity.ok("Event processed successfully");
     }

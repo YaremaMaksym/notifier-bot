@@ -10,9 +10,9 @@ public class EventService {
 
     private final MyTelegramBot myTelegramBot;
 
-    public void handleEvent() {
+    public void handleEvent(String region) {
         myTelegramBot.sendMessage(
-                "Time to be real!"
+                ("Time to be real! With region: " + region)
         );
     }
 }
