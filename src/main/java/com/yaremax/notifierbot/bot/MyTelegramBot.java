@@ -19,15 +19,19 @@ import java.util.Objects;
 @Component
 public class MyTelegramBot extends TelegramLongPollingCommandBot {
     private final String username;
+    private final String TEMP_CHAT_ID;
 
-    public MyTelegramBot(@Value("${bot.token}") String botToken, @Value("${bot.username}") String username) {
+    public MyTelegramBot(@Value("${bot.token}") String botToken,
+                         @Value("${bot.username}") String username,
+                         @Value("${bot.temp-chat-id}") String tempChatId) {
         super(botToken);
         this.username = username;
+        TEMP_CHAT_ID = tempChatId;
     }
 
-    public void sendMessage(String chatId, String text) {
+    public void sendMessage(String text) {
         SendMessage message = SendMessage.builder()
-                .chatId(chatId)
+                .chatId(TEMP_CHAT_ID)
                 .text(text)
                 .build();
         try {

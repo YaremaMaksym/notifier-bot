@@ -11,10 +11,8 @@ public class EventService {
     private final MyTelegramBot myTelegramBot;
 
     public void handleEvent() {
-
         myTelegramBot.sendMessage(
-                "662129866",
-                "Time to be real"
+                "Time to be real!"
         );
     }
 }
