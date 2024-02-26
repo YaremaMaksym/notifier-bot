@@ -1,0 +1,14 @@
+bot:
+    token: ${env.BOT_TOKEN}
+    username: ${env.BOT_USERNAME}
+    temp-chat-id: ${env.BOT_TEMP_CHAT_ID}
+
+server:
+    port: 443
+    ssl:
+        key-store: classpath:yaremax-keystore.p12
+        key-store-password: ***REMOVED***
+        key-store-type: pkcs12
+        key-alias: ***REMOVED***
+        key-password: ***REMOVED***
+        enabled: false
