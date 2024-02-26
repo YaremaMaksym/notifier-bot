@@ -1,4 +1,4 @@
-package com.yaremax.notifierbot.configuration;
+package com.yaremax.notifierbot.bot.configuration;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
