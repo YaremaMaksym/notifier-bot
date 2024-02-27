@@ -7,28 +7,21 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/event")
+@RequestMapping("/api/v1/events")
 @AllArgsConstructor
 public class EventController {
 
     private final EventService eventService;
 
-    @PostMapping
-    public ResponseEntity<String> handleEvent() {
-//        log.info("Received webhook event for region: {}", regionRequest.region());
-//        if (!isValidRegion(regionRequest.region())) {
-//            log.info("Invalid region: {}", regionRequest.region());
-////            return ResponseEntity.badRequest().body("Invalid region");
-//        }
-        log.info("Received POST request on /api/v1/event");
+    @PostMapping(consumes = "application/x-www-form-urlencoded")
+    public String handleEvent(@RequestBody String body) {
+        log.info("Received POST request on /api/v1/events with body " + body);
 
-        eventService.handleEvent("");
+        // body is in the format: region={{region}}
+        String region = body.split("=")[1];
 
-        return ResponseEntity.ok("Event processed successfully");
-    }
+        eventService.handleEvent(region);
 
-    private boolean isValidRegion(String region) {
-        return region.equals("us-central") || region.equals("europe-west") ||
-                region.equals("asia-east") || region.equals("asia-west");
+        return "Received region: " + region;
     }
 }
