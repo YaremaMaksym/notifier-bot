@@ -20,6 +20,9 @@
         <temurin.image.tag>17-jdk</temurin.image.tag>
         <jib.maven.plugin.version>3.4.0</jib.maven.plugin.version>
 
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
         <image>xsakon/notifier-bot-image:${project.version}</image>
     </properties>
 
