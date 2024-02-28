@@ -1,0 +1,27 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker
+        sudo apt-get install -y docker-compose
+
+    - name: Build and run Docker Compose services
+      run: |
+        BOT_TOKEN=${{ secrets.BOT_TOKEN }}
+        BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
+        BOT_USERNAME=${{ secrets.BOT_USERNAME }}
+        export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
+        docker-compose up -d
