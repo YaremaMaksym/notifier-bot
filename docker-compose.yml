@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    notifier-bot:
+        container_name: notifier-bot-container
+        image: xsakon/notifier-bot-image:latest
+        ports:
+            - "433:443"
+        environment:
+            - SPRING_PROFILES_ACTIVE=docker
+            - BOT_TOKEN=$BOT_TOKEN
+            - BOT_TEMP_CHAT_ID=$BOT_TEMP_CHAT_ID
+            - BOT_USERNAME=$BOT_USERNAME
+        networks:
+            - network_spring
+
+networks:
+    network_spring:
+        driver: bridge
+
+volumes:
+    postgres-volume-1:
