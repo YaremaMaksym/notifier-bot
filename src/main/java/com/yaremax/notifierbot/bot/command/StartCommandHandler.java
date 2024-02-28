@@ -27,19 +27,19 @@ public class StartCommandHandler extends BotCommand {
     @Override
     @SneakyThrows
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
-        var replyMarkup = InlineKeyboardMarkup.builder()
-                .keyboardRow(List.of(
-                        InlineKeyboardButton.builder()
-                                .text("I'm callback button")
-                                .callbackData(Actions.SOME_ACTION)
-                                .build()
-                ))
-                .build();
+//        var replyMarkup = InlineKeyboardMarkup.builder()
+//                .keyboardRow(List.of(
+//                        InlineKeyboardButton.builder()
+//                                .text("I'm callback button")
+//                                .callbackData(Actions.SOME_ACTION)
+//                                .build()
+//                ))
+//                .build();
         log.info(chat.getId().toString());
         var sendMessage = SendMessage.builder()
                 .chatId(chat.getId())
-                .text("Some text")
-                .replyMarkup(replyMarkup)
+                .text("Гав-гав, бот живий")
+//                .replyMarkup(replyMarkup)
                 .build();
         absSender.execute(sendMessage);
     }
