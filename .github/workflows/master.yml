@@ -36,6 +36,7 @@ jobs:
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
 
       # - name: Install Docker Compose
       #   run: |
