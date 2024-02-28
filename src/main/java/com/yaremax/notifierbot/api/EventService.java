@@ -12,7 +12,7 @@ public class EventService {
 
     public void handleEvent(String region) {
         myTelegramBot.sendMessage(
-                ("Time to be real! With region: " + region)
+                ("⏰Ахтунх! Час бути ріл⏰")
         );
     }
 }
