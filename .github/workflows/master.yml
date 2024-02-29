@@ -8,8 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
           
         - name: Set up JDK 17 and Maven
           uses: actions/setup-java@v3
@@ -30,10 +28,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+          
       - name: Logs
         run: |
           pwd
-          ls ./..
           ls -la
         
     
