@@ -30,6 +30,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          password: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
+          source: "docker-compose.yml"
+          target: /home
+    
       - name: SSH into DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
@@ -40,6 +49,7 @@ jobs:
 
       - name: Install Docker Compose
         run: |
+          ls /home
           sudo apt-get update
           sudo apt-get install -y docker
           sudo apt-get install -y docker-compose
