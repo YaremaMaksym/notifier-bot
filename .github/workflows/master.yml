@@ -44,7 +44,7 @@ jobs:
           source: "docker-compose.yml"
           target: /home
     
-      - name: Run docker-compose.yml services via SSH
+      - name: Re-Run docker-compose.yml services via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
@@ -56,4 +56,6 @@ jobs:
             BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
             BOT_USERNAME=${{ secrets.BOT_USERNAME }}
             export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
+            docker stop $(docker ps -aq)
+            docker rm $(docker ps -aq)
             docker-compose -f /home/docker-compose.yml up -d
