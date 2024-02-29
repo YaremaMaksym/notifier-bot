@@ -33,7 +33,8 @@ jobs:
       - name: Logs
         run: |
           pwd
-          ls
+          ls ./..
+          ls -la
         
     
       - name: copy file via ssh password
