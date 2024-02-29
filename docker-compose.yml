@@ -5,7 +5,7 @@ services:
         container_name: notifier-bot-container
         image: xsakon/notifier-bot-image:latest
         ports:
-            - "433:443"
+            - "443:443"
         environment:
             - SPRING_PROFILES_ACTIVE=docker
             - BOT_TOKEN=$BOT_TOKEN
