@@ -58,4 +58,5 @@ jobs:
             export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
             docker stop $(docker ps -aq)
             docker rm $(docker ps -aq)
+            docker rmi -f $(docker images -aq)
             docker-compose -f /home/docker-compose.yml up -d
