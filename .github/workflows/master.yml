@@ -30,6 +30,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Logs
+        run: |
+          pwd
+          ls
+        
+    
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.7
         with:
