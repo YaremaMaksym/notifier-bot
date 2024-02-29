@@ -5,38 +5,34 @@ on:
     branches: [master]
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
           
-  #       - name: Set up JDK 17 and Maven
-  #         uses: actions/setup-java@v3
-  #         with:
-  #           java-version: '17'
-  #           distribution: 'temurin'
-  #           cache: maven
+        - name: Set up JDK 17 and Maven
+          uses: actions/setup-java@v3
+          with:
+            java-version: '17'
+            distribution: 'temurin'
+            cache: maven
 
-  #       - name: Login to Docker Hub
-  #         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        - name: Login to Docker Hub
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-  #       - name: Build and push Docker image
-  #         run: |
-  #           mvn clean package -P build-docker-image -DskipTests 
+        - name: Build and push Docker image
+          run: |
+            mvn clean package -P build-docker-image -DskipTests 
 
   deploy:
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          
-      - name: Logs
-        run: |
-          pwd
-          ls -la
         
-    
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -55,12 +51,11 @@ jobs:
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
 
-      - name: Install Docker Compose
-        run: |
-          ls /home
-          sudo apt-get update
-          sudo apt-get install -y docker
-          sudo apt-get install -y docker-compose
+      # - name: Install Docker Compose
+      #   run: |
+      #     apt update
+      #     apt install -y docker.io
+      #     apt install -y docker-compose
   
       - name: Build and run Docker Compose services
         run: |
