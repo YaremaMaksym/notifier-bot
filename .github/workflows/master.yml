@@ -55,4 +55,4 @@ jobs:
             BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
             BOT_USERNAME=${{ secrets.BOT_USERNAME }}
             export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
-            docker-compose up -d
+            docker-compose -f /home/docker-compose.yml up -d
