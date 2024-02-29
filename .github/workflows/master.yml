@@ -43,24 +43,16 @@ jobs:
           source: "docker-compose.yml"
           target: /home
     
-      - name: SSH into DigitalOcean Droplet
+      - name: SSH into Droplet and run Docker Compose
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
-
-      # - name: Install Docker Compose
-      #   run: |
-      #     apt update
-      #     apt install -y docker.io
-      #     apt install -y docker-compose
-  
-      - name: Build and run Docker Compose services
-        run: |
-          BOT_TOKEN=${{ secrets.BOT_TOKEN }}
-          BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
-          BOT_USERNAME=${{ secrets.BOT_USERNAME }}
-          export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
-          docker-compose up -d
+          script: |
+            BOT_TOKEN=${{ secrets.BOT_TOKEN }}
+            BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
+            BOT_USERNAME=${{ secrets.BOT_USERNAME }}
+            export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
+            docker-compose up -d
