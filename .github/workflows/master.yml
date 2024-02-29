@@ -43,6 +43,7 @@ jobs:
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
           password: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           source: "docker-compose.yml"
           target: /home
     
