@@ -11,4 +11,4 @@ server:
         key-store-type: pkcs12
         key-alias: ***REMOVED***
         key-password: ***REMOVED***
-        enabled: false
+        enabled: true
