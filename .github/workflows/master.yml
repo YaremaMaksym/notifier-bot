@@ -52,11 +52,7 @@ jobs:
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
           script: |
-            BOT_TOKEN=${{ secrets.BOT_TOKEN }}
-            BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }}
-            BOT_USERNAME=${{ secrets.BOT_USERNAME }}
-            export BOT_TOKEN BOT_TEMP_CHAT_ID BOT_USERNAME
             docker stop $(docker ps -aq)
             docker rm $(docker ps -aq)
             docker rmi -f $(docker images -aq)
-            docker-compose -f /home/docker-compose.yml up -d
+            BOT_TOKEN=${{ secrets.BOT_TOKEN }} BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }} BOT_USERNAME=${{ secrets.BOT_USERNAME }} docker-compose -f /home/docker-compose.yml up -d
