@@ -7,7 +7,7 @@ server:
     port: 443
     ssl:
         key-store: classpath:yaremax-keystore.p12
-        key-store-password: ***REMOVED***
+        key-store-password: ${env.SSL_KEY_STORE_PASSWORD}
         key-store-type: pkcs12
-        key-alias: ***REMOVED***
-        key-password: ***REMOVED***
+        key-alias: ${env.SSL_KEY_ALIAS}
+        key-password: ${env.SSL_KEY_PASSWORD}

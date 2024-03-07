@@ -11,6 +11,9 @@ services:
             - BOT_TOKEN=$BOT_TOKEN
             - BOT_TEMP_CHAT_ID=$BOT_TEMP_CHAT_ID
             - BOT_USERNAME=$BOT_USERNAME
+            - SSL_KEY_STORE_PASSWORD=$SSL_KEY_STORE_PASSWORD
+            - SSL_KEY_ALIAS=$SSL_KEY_ALIAS
+            - SSL_KEY_PASSWORD=$SSL_KEY_PASSWORD
         oom_kill_disable: true
         deploy:
             resources:
