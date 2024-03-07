@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+          
+        - name: Set up JDK 17 and Maven
+          uses: actions/setup-java@v3
+          with:
+            java-version: '17'
+            distribution: 'temurin'
+            cache: maven
+
+        - name: Login to Docker Hub
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+        - name: Build and push Docker image
+          run: |
+            mvn clean package -P build-docker-image -DskipTests 
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Copy docker-compose file via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml"
+          target: /home
+    
+      - name: Re-Run docker-compose.yml services via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.DIGITAL_OCEAN_SSH_PASSPHRASE }}
+          script: |
+            docker stop $(docker ps -aq)
+            docker rm $(docker ps -aq)
+            docker rmi -f $(docker images -aq)
+            BOT_TOKEN=${{ secrets.BOT_TOKEN }} BOT_TEMP_CHAT_ID=${{ secrets.BOT_TEMP_CHAT_ID }} BOT_USERNAME=${{ secrets.BOT_USERNAME }} docker-compose -f /home/docker-compose.yml up -d
