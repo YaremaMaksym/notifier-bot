@@ -11,6 +11,11 @@ services:
             - BOT_TOKEN=$BOT_TOKEN
             - BOT_TEMP_CHAT_ID=$BOT_TEMP_CHAT_ID
             - BOT_USERNAME=$BOT_USERNAME
+        oom_kill_disable: true
+        deploy:
+            resources:
+                limits:
+                    memory: 256M
         networks:
             - network_spring
 
