@@ -13,15 +13,24 @@ public class EventController {
 
     private final EventService eventService;
 
-    @PostMapping(consumes = "application/x-www-form-urlencoded")
-    public String handleEvent(@RequestBody String body) {
-        log.info("Received POST request on /api/v1/events with body " + body);
+    @PostMapping
+    public String handleEvent() {
+        log.info("Received POST request on /api/v1/events");
 
-        // body is in the format: region={{region}}
-        String region = body.split("=")[1];
+        eventService.handleEvent();
 
-        eventService.handleEvent(region);
-
-        return "Received region: " + region;
+        return "Received POST request";
     }
+
+//    @PostMapping(consumes = "application/x-www-form-urlencoded")
+//    public String handleEvent(@RequestBody String body) {
+//        log.info("Received POST request on /api/v1/events with body " + body);
+//
+//        // body is in the format: region={{region}}
+//        String region = body.split("=")[1];
+//
+//        eventService.handleEvent();
+//
+//        return "Received region: " + region;
+//    }
 }
