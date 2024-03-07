@@ -13,6 +13,11 @@ public class EventController {
 
     private final EventService eventService;
 
+    @GetMapping
+    public String getHello() {
+        return "Hello";
+    }
+
     @PostMapping
     public String handleEvent() {
         log.info("Received POST request on /api/v1/events");
