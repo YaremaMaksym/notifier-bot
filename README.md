@@ -1,4 +1,4 @@
-# Streaming Twitter Feed
+# Notifier bot
 This project is a web service that subscribes to a webhook and sends a message via a telegram bot when a request is received.\
 The webhook my service is subscribed to is on: https://bereal.devin.fun/ by [Devin Baeten](https://github.com/devinbaeten)
 
