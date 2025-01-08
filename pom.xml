@@ -19,6 +19,7 @@
         <java.version>17</java.version>
         <temurin.image.tag>17-jdk</temurin.image.tag>
         <jib.maven.plugin.version>3.4.0</jib.maven.plugin.version>
+        <telegram.bots.version>6.9.7.1</telegram.bots.version>
 
         <image>xsakon/notifier-bot-image:${project.version}</image>
     </properties>
@@ -50,17 +51,17 @@
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
-            <version>6.9.7.1</version>
+            <version>${telegram.bots.version}</version>
         </dependency>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambotsextensions</artifactId>
-            <version>6.9.7.1</version>
+            <version>${telegram.bots.version}</version>
         </dependency>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots-spring-boot-starter</artifactId>
-            <version>6.9.7.1</version>
+            <version>${telegram.bots.version}</version>
         </dependency>
     </dependencies>
 
