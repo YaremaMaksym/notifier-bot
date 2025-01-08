@@ -1,6 +1,6 @@
 package com.yaremax.notifierbot.api;
 
-import com.yaremax.notifierbot.bot.MyTelegramBot;
+import com.yaremax.notifierbot.MyTelegramBot;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,6 @@ public class EventService {
     private final MyTelegramBot myTelegramBot;
 
     public void handleEvent() {
-        myTelegramBot.sendMessage(
-                ("⏰Ахтунх! Час бути ріл⏰")
-        );
+        myTelegramBot.sendMessageToPrimaryChat("⏰Ахтунх! Час бути ріл⏰");
     }
 }
