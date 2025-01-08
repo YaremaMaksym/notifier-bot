@@ -1,7 +1,7 @@
 bot:
-    token: ${BOT_TOKEN}
-    username: ${BOT_USERNAME}
-    temp-chat-id: ${BOT_TEMP_CHAT_ID}
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_BOT_USERNAME}
+    temp-chat-id: ${TELEGRAM_PRIMARY_CHAT_ID}
 
 server:
     port: 443

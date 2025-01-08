@@ -1,7 +1,7 @@
 bot:
-    token: ${env.BOT_TOKEN}
-    username: ${env.BOT_USERNAME}
-    temp-chat-id: ${env.BOT_TEMP_CHAT_ID}
+    token: ${env.TELEGRAM_BOT_TOKEN}
+    username: ${env.TELEGRAM_BOT_USERNAME}
+    temp-chat-id: ${env.TELEGRAM_PRIMARY_CHAT_ID}
 
 server:
     port: 443
