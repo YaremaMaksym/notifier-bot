@@ -7,5 +7,5 @@ I decided to do this project because my BeReal app wasn't sending me notificatio
 And now I always get notified, even when I'm working at a computer and phone isn't near.
 
 
-The channel where my bot sends messages can be found here: https://t.me/BeReal_Alarm \
+The channel where my bot sends messages can be found here: https://t.me/BeReal_Alarm_EU \
 **Currently bot sends messages only for the Europe region**
